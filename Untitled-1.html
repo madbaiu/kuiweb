@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #cecece;
+        }
+
+        input[type="text"], select {
+            margin-bottom: 10px;
+            width: 100%;
+            padding: 8px;
+        }
+
+        h3 {
+            text-align: right;
+        }
+    </style>
+
+</head>
+<body>
+    <h3>Update Terakhir : 10/10/1999</h3>
+    <input type="text" id="nameFilter" onkeyup="filterTable()" placeholder="Cari nama dokumen..">
+    <select id="typeFilter" onchange="filterTable()">
+        <option value="">Pilih tipe dokumen...</option>
+        <option value="Laporan">Laporan</option>
+        <option value="Panduan">Panduan</option>
+        <option value="Dokumen Lainnya">Dokumen Lainnya</option>
+    </select>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width:5%">No</th>
+                <th>Nama Dokumen</th>
+                <th style="width:20%">Tipe</th>
+                <th style="width:15%">Download</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <tr>
+                <td>1</td>
+                <td>Tes Nama Dokumen</td>
+                <td>Dokumen Lainnya</td>
+                <td><a href="https://google.com">Download</a></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Contoh Laporan Tahunan</td>
+                <td>Laporan</td>
+                <td><a href="https://example.com">Download</a></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Panduan Pengguna</td>
+                <td>Panduan</td>
+                <td><a href="https://example.com">Download</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function filterTable() {
+            const nameInput = document.getElementById("nameFilter").value.toLowerCase();
+            const typeInput = document.getElementById("typeFilter").value;
+            const tableBody = document.getElementById("tableBody");
+            const rows = tableBody.getElementsByTagName("tr");
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                if (cells[1] && cells[2]) {
+                    const name = cells[1].textContent.toLowerCase();
+                    const type = cells[2].textContent;
+
+                    const matchesName = name.includes(nameInput);
+                    const matchesType = typeInput === "" || type === typeInput;
+
+                    if (matchesName && matchesType) {
+                        rows[i].style.display = "";
+                    } else {
+                        rows[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
