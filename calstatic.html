@@ -1,0 +1,117 @@
+<h2>Kalender KUI</h2>
+<div class="nav">
+    <button onclick="prevMonth()">◁</button>
+    <select id="monthSelect" onchange="updateCalendar()"></select>
+    <select id="yearSelect" onchange="updateCalendar()"></select>
+    <button onclick="nextMonth()">▷</button>
+</div>
+<figure class="table">
+    <table id="calendar">
+        <thead>
+            <tr>
+                <th>Min</th>
+                <th>Sen</th>
+                <th>Sel</th>
+                <th>Rab</th>
+                <th>Kam</th>
+                <th>Jum</th>
+                <th>Sab</th>
+            </tr>
+        </thead>
+        <tbody id="calendar-body"></tbody> <!-- Perbaikan: Menambahkan tbody -->
+    </table>
+</figure>
+<script>
+    let currentYear, currentMonth;
+
+    function generateYearOptions() {
+        const yearSelect = document.getElementById("yearSelect");
+        const currentYear = new Date().getFullYear();
+        for (let i = currentYear - 50; i <= currentYear + 50; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
+        }
+        yearSelect.value = currentYear;
+    }
+
+    function generateMonthOptions() {
+        const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        const monthSelect = document.getElementById("monthSelect");
+        monthNames.forEach((month, index) => {
+            let option = document.createElement("option");
+            option.value = index;
+            option.textContent = month;
+            monthSelect.appendChild(option);
+        });
+        monthSelect.value = new Date().getMonth();
+    }
+
+    function updateCalendar() {
+        currentYear = parseInt(document.getElementById("yearSelect").value);
+        currentMonth = parseInt(document.getElementById("monthSelect").value);
+        renderCalendar(currentYear, currentMonth);
+    }
+
+    function renderCalendar(year, month) {
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const calendarBody = document.getElementById("calendar-body");
+        calendarBody.innerHTML = ""; // Bersihkan tabel sebelum mengisi ulang
+
+        let row = document.createElement("tr");
+        for (let i = 0; i < firstDay; i++) {
+            let emptyCell = document.createElement("td");
+            row.appendChild(emptyCell);
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+            if (row.children.length === 7) {
+                calendarBody.appendChild(row);
+                row = document.createElement("tr");
+            }
+            let dayCell = document.createElement("td");
+            dayCell.textContent = day;
+            row.appendChild(dayCell);
+        }
+
+        if (row.children.length > 0) {
+            while (row.children.length < 7) {
+                let emptyCell = document.createElement("td");
+                row.appendChild(emptyCell);
+            }
+            calendarBody.appendChild(row);
+        }
+    }
+
+    function prevMonth() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        document.getElementById("monthSelect").value = currentMonth;
+        document.getElementById("yearSelect").value = currentYear;
+        updateCalendar();
+    }
+
+    function nextMonth() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        document.getElementById("monthSelect").value = currentMonth;
+        document.getElementById("yearSelect").value = currentYear;
+        updateCalendar();
+    }
+
+    window.onload = function () {
+        generateYearOptions();
+        generateMonthOptions();
+        document.getElementById("yearSelect").value = new Date().getFullYear();
+        document.getElementById("monthSelect").value = new Date().getMonth();
+        updateCalendar();
+    };
+</script>

@@ -1,0 +1,27 @@
+<div class="image-container">
+    <figure class="image">
+        <img style="aspect-ratio:2000/1414;" src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/Kalender_KUI_2025.png" width="2000" height="1414" id="popoutImage">
+    </figure>
+    <p>
+        <a class="image-link" href="https://example.com" target="_blank">Kunjungi Halaman</a>
+    </p>
+</div>
+<div class="modal" id="imageModal">
+    <span class="close">×</span> <img class="modal-content" id="modalImg">
+</div>
+<script>
+        var modal = document.getElementById("imageModal");
+        var img = document.getElementById("popoutImage");
+        var modalImg = document.getElementById("modalImg");
+        var closeBtn = document.querySelector(".close");
+        img.onclick = function() {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+            modalImg.style.width = "70%";
+            modalImg.style.height = "auto";
+        }
+        
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+    </script>
