@@ -1,0 +1,80 @@
+<h3>
+    Update Terakhir : <span id="lastUpdate"></span>
+</h3>
+<p>
+    <input type="text" id="nameFilter" onkeyup="filterTable()" placeholder="Cari nama dokumen.."> 
+    <select id="typeFilter" onchange="filterTable()">
+        <option value="">Pilih tipe dokumen...</option>
+        <option value="Laporan">Laporan</option>
+        <option value="Panduan">Panduan</option>
+        <option value="Surat Pernyataan">Surat Pernyataan</option>
+        <option value="Dokumen Lainnya">Dokumen Lainnya</option>
+    </select>
+</p>
+
+<figure class="table">
+    <table>
+        <thead>
+            <tr>
+                <th style="width:5%;">No</th>
+                <th>Nama Dokumen</th>
+                <th style="width:20%;">Tipe</th>
+                <th style="width:15%;">Download</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+</figure>
+
+<script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbx21FgArVoijciJE5_fyEGikdQ56-8pEZp6WDjVJx1PHLsmpYzbR4bp5acHtu3KVIw9Qg/exec";
+
+    async function fetchGoogleDriveFiles() {
+        try {
+            const response = await fetch(scriptURL);
+            const files = await response.json();
+            const tableBody = document.getElementById("tableBody");
+            tableBody.innerHTML = "";
+
+            files.forEach((file, index) => {
+                const row = `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${file.name}</td>
+                        <td>${file.type}</td>
+                        <td><a href="${file.url}" target="_blank">Download</a></td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+
+            
+            document.getElementById("lastUpdate").textContent = new Date().toLocaleDateString("id-ID");
+        } catch (error) {
+            console.error("Error fetching files:", error);
+        }
+    }
+
+    function filterTable() {
+        const nameInput = document.getElementById("nameFilter").value.toLowerCase();
+        const typeInput = document.getElementById("typeFilter").value;
+        const tableBody = document.getElementById("tableBody");
+        const rows = tableBody.getElementsByTagName("tr");
+
+        for (let i = 0; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName("td");
+            if (cells[1] && cells[2]) {
+                const name = cells[1].textContent.toLowerCase();
+                const type = cells[2].textContent;
+                const matchesName = name.includes(nameInput);
+                const matchesType = typeInput === "" || type === typeInput;
+
+                rows[i].style.display = matchesName && matchesType ? "" : "none";
+            }
+        }
+    }
+
+    
+    document.addEventListener("DOMContentLoaded", fetchGoogleDriveFiles);
+</script>
