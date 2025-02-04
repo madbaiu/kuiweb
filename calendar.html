@@ -20,29 +20,20 @@
             border: 1px solid #ddd;
             text-align: center;
             width: 14.28%;
+            cursor: pointer;
         }
         #calendar th {
             background-color: #f4f4f4;
         }
-        #calendar td {
-            cursor: pointer;
-        }
-        #calendar td:hover {
-            background-color: #f0f0f0;
-        }
-        .nav {
-            margin-bottom: 10px;
-        }
-        .nav select, .nav button {
-            padding: 5px;
-            font-size: 16px;
+        .event {
+            background-color: yellow;
         }
     </style>
 </head>
 <body>
 
     <h2>Kalender KUI</h2>
-    <div class="nav">
+    <div>
         <button onclick="prevMonth()">&#9665;</button>
         <select id="monthSelect" onchange="updateCalendar()"></select>
         <select id="yearSelect" onchange="updateCalendar()"></select>
@@ -63,9 +54,10 @@
         </thead>
         <tbody id="calendar-body"></tbody>
     </table>
-
+    
     <script>
         let currentYear, currentMonth;
+        let events = {};
 
         function generateYearOptions() {
             const yearSelect = document.getElementById("yearSelect");
@@ -92,11 +84,9 @@
         }
 
         function updateCalendar() {
-            const year = parseInt(document.getElementById("yearSelect").value);
-            const month = parseInt(document.getElementById("monthSelect").value);
-            currentYear = year;
-            currentMonth = month;
-            renderCalendar(year, month);
+            currentYear = parseInt(document.getElementById("yearSelect").value);
+            currentMonth = parseInt(document.getElementById("monthSelect").value);
+            renderCalendar(currentYear, currentMonth);
         }
 
         function renderCalendar(year, month) {
@@ -107,8 +97,7 @@
 
             let row = document.createElement("tr");
             for (let i = 0; i < firstDay; i++) {
-                let emptyCell = document.createElement("td");
-                row.appendChild(emptyCell);
+                row.appendChild(document.createElement("td"));
             }
 
             for (let day = 1; day <= daysInMonth; day++) {
@@ -118,15 +107,32 @@
                 }
                 let dayCell = document.createElement("td");
                 dayCell.textContent = day;
+                dayCell.onclick = () => addEvent(year, month, day, dayCell);
+                
+                let dateKey = `${year}-${month}-${day}`;
+                if (events[dateKey]) {
+                    dayCell.classList.add("event");
+                    dayCell.title = events[dateKey];
+                }
+                
                 row.appendChild(dayCell);
             }
 
             if (row.children.length > 0) {
                 while (row.children.length < 7) {
-                    let emptyCell = document.createElement("td");
-                    row.appendChild(emptyCell);
+                    row.appendChild(document.createElement("td"));
                 }
                 calendarBody.appendChild(row);
+            }
+        }
+
+        function addEvent(year, month, day, cell) {
+            let eventName = prompt("Masukkan nama event:");
+            if (eventName) {
+                let dateKey = `${year}-${month}-${day}`;
+                events[dateKey] = eventName;
+                cell.classList.add("event");
+                cell.title = eventName;
             }
         }
 
