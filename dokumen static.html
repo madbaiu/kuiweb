@@ -3,12 +3,12 @@
 </h3>
 <p>
     <input type="text" id="nameFilter" onkeyup="filterTable()" placeholder="Cari nama dokumen.."> <select id="typeFilter" onchange="filterTable()">
-                    <option value="">Pilih tipe dokumen...</option>
-                    <option value="Laporan">Laporan</option>
-                    <option value="Panduan">Panduan</option>
-                    <option value="Surat Pernyataan">Surat Pernyataan</option>
-                    <option value="Dokumen Lainnya">Dokumen Lainnya</option>
-                </select>
+                        <option value="">Pilih tipe dokumen...</option>
+                        <option value="Laporan">Laporan</option>
+                        <option value="Panduan">Panduan</option>
+                        <option value="Surat Pernyataan">Surat Pernyataan</option>
+                        <option value="Dokumen Lainnya">Dokumen Lainnya</option>
+                    </select>
 </p>
 <figure class="table">
     <table>
@@ -57,30 +57,86 @@
                     <a href="https://drive.google.com/file/d/1itS8Qk4gxKCIG1tqOcgGWJbavJuPgE6C/view?usp=sharing" target="_blank">Download</a>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    3
+                </td>
+                <td>
+                    Pedoman Kerjasama
+                </td>
+                <td>
+                    Panduan
+                </td>
+                <td>
+                    Download
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    4
+                </td>
+                <td>
+                    Kebijakan Kerjasama
+                </td>
+                <td>
+                    Dokumen Lainnya
+                </td>
+                <td>
+                    Download
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    5
+                </td>
+                <td>
+                    SOP Kerjasama
+                </td>
+                <td>
+                    Panduan
+                </td>
+                <td>
+                    Download
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    6
+                </td>
+                <td>
+                    Kebijakan Pengembangan Jejaring dan Kemitraan
+                </td>
+                <td>
+                    Dokumen Lainnya
+                </td>
+                <td>
+                    Download
+                </td>
+            </tr>
         </tbody>
     </table>
 </figure>
 <p>
     <script>
-                    function filterTable() {
-                        const nameInput = document.getElementById("nameFilter").value.toLowerCase();
-                        const typeInput = document.getElementById("typeFilter").value;
-                        const tableBody = document.getElementById("tableBody");
-                        const rows = tableBody.getElementsByTagName("tr");
-                        for (let i = 0; i < rows.length; i++) {
-                            const cells = rows[i].getElementsByTagName("td");
-                            if (cells[1] && cells[2]) {
-                                const name = cells[1].textContent.toLowerCase();
-                                const type = cells[2].textContent;
-                                const matchesName = name.includes(nameInput);
-                                const matchesType = typeInput === "" || type === typeInput;
-                                if (matchesName && matchesType) {
-                                    rows[i].style.display = "";
-                                } else {
-                                    rows[i].style.display = "none";
+                        function filterTable() {
+                            const nameInput = document.getElementById("nameFilter").value.toLowerCase();
+                            const typeInput = document.getElementById("typeFilter").value;
+                            const tableBody = document.getElementById("tableBody");
+                            const rows = tableBody.getElementsByTagName("tr");
+                            for (let i = 0; i < rows.length; i++) {
+                                const cells = rows[i].getElementsByTagName("td");
+                                if (cells[1] && cells[2]) {
+                                    const name = cells[1].textContent.toLowerCase();
+                                    const type = cells[2].textContent;
+                                    const matchesName = name.includes(nameInput);
+                                    const matchesType = typeInput === "" || type === typeInput;
+                                    if (matchesName && matchesType) {
+                                        rows[i].style.display = "";
+                                    } else {
+                                        rows[i].style.display = "none";
+                                    }
                                 }
                             }
                         }
-                    }
-                </script>
+                    </script>
 </p>
