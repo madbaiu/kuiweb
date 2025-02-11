@@ -1,15 +1,11 @@
 iro@umkt.ac.id
 Website KUI
-Kontak nomor bu Anita dan bu Menik
 
 Halaman utama News, Past Event
 
 Post Bhs. Indonesia Bhs. Inggris
 
-About Us - Hapus Dokumentasi - Campus Facilities
 Struktur Ganti Pohon Organisasi KUI cari di drive
-
-Kontak hapus
 
 Official Video
 
@@ -23,24 +19,17 @@ survey
 - monev form
 - partnership satisfaction form
 
-Pedoman Kerjasama
-kebijakan Kerjasama
-sop Kerjasama
-kebijakan pengembangan jejaring dan kemitraan
+tambahkan academic mobility kek iro.umy.ac.id/
+lecturer program
+- inbound
+- outbound
 
-+ tambahkan academic mobility kek iro.umy.ac.id/
+student program
+- student exchange
+- inbound
+- outbound
 
 + kalender
 halaman sendiri
-bisa di klik di index
 
-+ Dokumen - untuk format yg didownload
-+ SOP?
-+ Surat Peryaataan Kebenaran Dokumen Mahasiswa
-https://www.umkt.ac.id/lembaga-penelitian-dan-pengabdian-masyarakat/download.html
-
-- Study at UMKT
-- Going Abroad
-- Collaborative with UMKT
-
-Tampilkan Monitoring Kerjasama KUI
++Tampilkan Monitoring Kerjasama KUI
