@@ -1,117 +1,139 @@
-<h2>Kalender KUI</h2>
-<div class="nav">
-    <button onclick="prevMonth()">◁</button>
-    <select id="monthSelect" onchange="updateCalendar()"></select>
-    <select id="yearSelect" onchange="updateCalendar()"></select>
-    <button onclick="nextMonth()">▷</button>
-</div>
-<figure class="table">
-    <table id="calendar">
-        <thead>
-            <tr>
-                <th>Min</th>
-                <th>Sen</th>
-                <th>Sel</th>
-                <th>Rab</th>
-                <th>Kam</th>
-                <th>Jum</th>
-                <th>Sab</th>
-            </tr>
-        </thead>
-        <tbody id="calendar-body"></tbody> <!-- Perbaikan: Menambahkan tbody -->
-    </table>
-</figure>
-<script>
-    let currentYear, currentMonth;
-
-    function generateYearOptions() {
-        const yearSelect = document.getElementById("yearSelect");
-        const currentYear = new Date().getFullYear();
-        for (let i = currentYear - 50; i <= currentYear + 50; i++) {
-            let option = document.createElement("option");
-            option.value = i;
-            option.textContent = i;
-            yearSelect.appendChild(option);
-        }
-        yearSelect.value = currentYear;
-    }
-
-    function generateMonthOptions() {
-        const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-        const monthSelect = document.getElementById("monthSelect");
-        monthNames.forEach((month, index) => {
-            let option = document.createElement("option");
-            option.value = index;
-            option.textContent = month;
-            monthSelect.appendChild(option);
-        });
-        monthSelect.value = new Date().getMonth();
-    }
-
-    function updateCalendar() {
-        currentYear = parseInt(document.getElementById("yearSelect").value);
-        currentMonth = parseInt(document.getElementById("monthSelect").value);
-        renderCalendar(currentYear, currentMonth);
-    }
-
-    function renderCalendar(year, month) {
-        const firstDay = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-        const calendarBody = document.getElementById("calendar-body");
-        calendarBody.innerHTML = ""; // Bersihkan tabel sebelum mengisi ulang
-
-        let row = document.createElement("tr");
-        for (let i = 0; i < firstDay; i++) {
-            let emptyCell = document.createElement("td");
-            row.appendChild(emptyCell);
-        }
-
-        for (let day = 1; day <= daysInMonth; day++) {
-            if (row.children.length === 7) {
-                calendarBody.appendChild(row);
-                row = document.createElement("tr");
-            }
-            let dayCell = document.createElement("td");
-            dayCell.textContent = day;
-            row.appendChild(dayCell);
-        }
-
-        if (row.children.length > 0) {
-            while (row.children.length < 7) {
-                let emptyCell = document.createElement("td");
-                row.appendChild(emptyCell);
-            }
-            calendarBody.appendChild(row);
-        }
-    }
-
-    function prevMonth() {
-        currentMonth--;
-        if (currentMonth < 0) {
-            currentMonth = 11;
-            currentYear--;
-        }
-        document.getElementById("monthSelect").value = currentMonth;
-        document.getElementById("yearSelect").value = currentYear;
-        updateCalendar();
-    }
-
-    function nextMonth() {
-        currentMonth++;
-        if (currentMonth > 11) {
-            currentMonth = 0;
-            currentYear++;
-        }
-        document.getElementById("monthSelect").value = currentMonth;
-        document.getElementById("yearSelect").value = currentYear;
-        updateCalendar();
-    }
-
-    window.onload = function () {
-        generateYearOptions();
-        generateMonthOptions();
-        document.getElementById("yearSelect").value = new Date().getFullYear();
-        document.getElementById("monthSelect").value = new Date().getMonth();
-        updateCalendar();
-    };
-</script>
+<p style="text-align:center;">
+    <iframe style="border-width:0;" src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;ctz=Asia%2FMakassar&amp;showTz=0&amp;showCalendars=0&amp;src=Y18wMWJkZGIzOGI0YTUxNWMyNDI5NmNjZDZlMWQzZmIyMjM2NDk3MzIyZjNjNDcwOWNhNGZhZGE4MjE3MDA5ZmM1QGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&amp;color=%23039BE5" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+</p>
+<p style="text-align:center;">
+    Atau kalian dapat melihat versi gambarnya <a href="https://minio.umkt.ac.id/dev-umkt-media/dokumen/Kalender_KUI_2025.png">Disini</a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Januari</strong>
+</h2>
+<p style="text-align:center;">
+    <i>06 Januari 2025</i><br>
+    Beasiswa S2 dan S3 King Saud University<br>
+    <a href="http://dgs.ksu.edu.sa"><strong>Klik Disini</strong></a><br>
+    <i>17 Januari 2025 s/d 17 Februari 2025</i><br>
+    Beasiswa LPDP<br>
+    <a href="https://beasiswalpdp.kemenkeu.go.id/"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Februari</strong>
+</h2>
+<p style="text-align:center;">
+    <i>03 Februari 2025 s/d Oktober 2025</i><br>
+    Beasiswa Kartu Indonesia Pintar<br>
+    <a href="https://kip-kuliah.kemdikbud.go.id/"><strong>Klik Disini</strong></a><br>
+    <i>04 Februari 2025 s/d 19 Februari 2025</i><br>
+    Pendaftaran English Camp&nbsp;&nbsp;&nbsp;&nbsp;<br>
+    <i>15 November 2024 s/d 15 Februari 2025</i><br>
+    Fulbright Master'S Degree Scholarship<br>
+    <a href="https://rebrand.ly/Fulbright-MA"><strong>Klik Disini</strong></a><br>
+    <i>21 Februari 2025 s/d 23 Februari 2025</i><br>
+    English Camp<br>
+    <i>15 Februari 2025</i><br>
+    Fulbright Doctoral Degree (PhD) Scholarship<br>
+    <a href="https://search.app/BACiE1Lc7zMM86s7A"><strong>Klik DIsini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Maret</strong>
+</h2>
+<p style="text-align:center;">
+    <i>01 Maret 2025 s/d 01 Mei 2025</i><br>
+    Fall Semester Asia University,Taiwan<br>
+    <a href="https://www.umkt.ac.id/kantor-urusan-internasional/"><strong>Klik Disini</strong></a><br>
+    <i>15 Maret 2025</i><br>
+    The Fulbright / Kennedy Center Fellowship for Performing Arts And Science<br>
+    <a href="https://search.app/n7pYAeW7dtPKigRt7"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>April</strong>
+</h2>
+<p style="text-align:center;">
+    <i>14 April 2025 s/d 14 Juni 2025</i><br>
+    Fall Semester KDU, Korea Selatan<br>
+    <a href="https://www.umkt.ac.id/kantor-urusan-internasional/"><strong>Klik Disini</strong></a><br>
+    <i>15 April 2025</i><br>
+    Fulbright Foreign Language Teaching Assistant (FLTA) Program<br>
+    <a href="https://www.aminef.or.id/grants-for-indonesians/fulbright-programs/foreign-language-teaching-assistant-flta-2/"><strong>Klik Disini</strong></a><br>
+    <i>15 April 2025</i><br>
+    Fulbright Distinguished Awards in Teaching Program for International Teachers (Fulbright DAI)<br>
+    <a href="https://www.aminef.or.id/grants-for-indonesians/fulbright-programs/fellowships/fulbright-dai/"><strong>Klik Disini</strong></a><br>
+    <i>15 April 2025</i><br>
+    Hubert H. Humphrey Fellowship for Mid-career Professionals<br>
+    <a href="https://www.aminef.or.id/c/uploads/2024/04/Panduan-Aplikasi-Daring-Versi_Bahasa_Indonesia_Hubert-H.-Humphrey.pdf"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Mei</strong>
+</h2>
+<p style="text-align:center;">
+    <i>02 Mei 2025 s/d 15 Juni 2025</i><br>
+    Beasiswa Pendidikan Indonesia<br>
+    <a href="https://beasiswa.kemdikbud.go.id/"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Juni</strong>
+</h2>
+<p style="text-align:center;">
+    Juni 2025 s/d Juli 2025<br>
+    Beasiswa Indonesia Bangkit<br>
+    <a href="https://beasiswa.kemenag.go.id/"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Juli</strong>
+</h2>
+<p style="text-align:center;">
+    <i>01 Juli 2025 s/d 14 Juli 2025</i><br>
+    Beasiswa Unggulan<br>
+    <a href="https://beasiswaunggulan.kemdikbud.go.id/"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Agustus</strong>
+</h2>
+<p style="text-align:center;">
+    <i>21 Agustus 2025 s/d 21 Oktober 2025</i><br>
+    Spring Semester KDU,Korea<br>
+    <a href="https://www.umkt.ac.id/kantor-urusan-internasional/"><strong>Klik Disini</strong></a><br>
+    <i>23 Agustus 2025 s/d 17 Oktober 2025</i><br>
+    Beasiswa YSEALI Professional Fellows Program<br>
+    <a href="https://www.ysealipfp.org/about"><strong>Klik Disini</strong></a><br>
+    <i>27 Agustus 2025 s/d 13 September 2025</i><br>
+    Beasiswa Riset BAZNAS<br>
+    <a href="https://beasiswa.baznas.go.id/program-beasiswa"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>September</strong>
+</h2>
+<p style="text-align:center;">
+    <i>01 September 2025 s/d 01 November 2025</i><br>
+    Spring Semester Asia University,Taiwan<br>
+    <a href="https://www.umkt.ac.id/kantor-urusan-internasional/"><strong>Klik Disini</strong></a><br>
+    <i>11 September 2025 s/d 05 November 2025</i><br>
+    Beasiswa KOMINFO<br>
+    <a href="https://beasiswa.kominfo.go.id/"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Oktober</strong>
+</h2>
+<p style="text-align:center;">
+    <i>15 Oktober 2025</i><br>
+    Beasiswa Fulbright-National Archives Heritage Science Fellowship<br>
+    <a href="https://www.aminef.or.id/grants-for-indonesians/fulbright-programs/fellowships/fulbright-visiting-scholar/fulbright-national-archives-heritage-science-fellowship/"><strong>Klik Disini</strong></a><br>
+    <i>20 Oktober 2025 s/d 01 Desember 2025</i><br>
+    Fulbright US–ASEAN Visiting Scholar Program<br>
+    <a href="https://search.app/3sKNYTqWgL9GD1Dp8"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>November</strong>
+</h2>
+<p style="text-align:center;">
+    <i>11 November 2025 s/d 15 Desember 2025</i><br>
+    Global Undergraduate Exchange Program<br>
+    <a href="https://search.app/E5fT6fiyZGrUWLhNA"><strong>Klik Disini</strong></a>
+</p>
+<h2 style="text-align:center;">
+    <strong>Desember</strong>
+</h2>
+<p style="text-align:center;">
+    <i>31 Desember 2025</i><br>
+    Community College Initiative Program (CCI Program)<br>
+    <a href="https://www.aminef.or.id/grants-for-indonesians/fulbright-programs/fellowships/community-college-initiative-program/"><strong>Klik Disini</strong></a>
+</p>
