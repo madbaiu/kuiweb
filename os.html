@@ -8,19 +8,35 @@
     body {
         font-family: "Poppins", sans-serif;
         margin: 0;
-        padding: 20px;
-        background: #f9fafb;
+        padding: 40px 20px;
+        background: #ffffff;
         color: #333;
+    }
+
+    h2 {
+        text-align: center;
+        font-weight: 600;
+        color: #253253;
+        margin-bottom: 25px;
+        letter-spacing: 0.3px;
+    }
+
+    .divider {
+        width: 160px;
+        height: 4px;
+        background: linear-gradient(90deg, #253253, #ffcc70);
+        border-radius: 2px;
+        margin: 0 auto 40px auto;
     }
 
     /* ---- Highlighted Deputy Card ---- */
     .deputy {
-        background: linear-gradient(135deg, #004aad, #0072ff);
+        background: linear-gradient(135deg, #999, #253253);
         color: white;
         border-radius: 20px;
         text-align: center;
         max-width: 400px;
-        margin: 0 auto 40px auto;
+        margin: 0 auto 60px auto;
         padding: 20px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         transition: transform 0.3s ease;
@@ -90,48 +106,77 @@
         color: #3498db;
         font-size: 0.9rem;
     }
+
+    /* ---- Section Spacing ---- */
+    section {
+        margin-bottom: 70px;
+    }
 </style>
 </head>
 <body>
 
-<!-- Highlighted Deputy -->
-<figure class="deputy">
-    <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Bambang Setiaji">
-    <figcaption>
-        <div class="name">Prof. Bambang Setiaji</div>
-        <div class="role">Deputy II for HRAD, Publications, and Partnerships</div>
-    </figcaption>
-</figure>
-
-<!-- Other Staff -->
-<div class="container">
-    <figure class="profile">
-        <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png" alt="Anita Shalehah">
+<!-- Deputy Section -->
+<section>
+    <h2>Deputy</h2>
+    <div class="divider"></div>
+    <figure class="deputy">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Bambang Setiaji">
         <figcaption>
-            <span class="text-big">Anita Shalehah, S.IP., M.A., Ph.D</span>
-            <span class="role">Director of International Relation Office</span><br>
-            <span class="email">Email: as350@umkt.ac.id</span>
+            <div class="name">Prof. Bambang Setiaji</div>
+            <div class="role">Deputy I for Cooperation, Business Development, and Investment</div>
         </figcaption>
     </figure>
+</section>
 
-    <figure class="profile">
-        <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png" alt="Menik Yuni Indriati">
-        <figcaption>
-            <span class="text-big">Menik Yuni Indriati, SE., M.Sc</span>
-            <span class="role">Secretary of International Relation Office</span><br>
-            <span class="email">Email: myi480@umkt.ac.id</span>
-        </figcaption>
-    </figure>
+<!-- Directors Section -->
+<section>
+    <h2>Director & Vice Directors</h2>
+    <div class="divider"></div>
+    <div class="container">
+        <figure class="profile">
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png" alt="Anita Shalehah">
+            <figcaption>
+                <span class="text-big">Anita Shalehah, S.IP., M.A., Ph.D</span>
+                <span class="role">Director of the Office of Cooperation and International Affairs</span><br>
+                <span class="email">Email: as350@umkt.ac.id</span>
+            </figcaption>
+        </figure>
 
-    <figure class="profile">
-        <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png" alt="Bayu Mahardika">
-        <figcaption>
-            <span class="text-big">Bayu Cadar Mahardika Putra Dewa, S.Kom</span>
-            <span class="role">Staff of International Relation Office</span><br>
-            <span class="email">Email: bcm697@umkt.ac.id</span>
-        </figcaption>
-    </figure>
-</div>
+        <figure class="profile">
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png" alt="Menik Yuni Indriati">
+            <figcaption>
+                <span class="text-big">Menik Yuni Indriati, SE., M.Sc</span>
+                <span class="role">Vice Director for Cooperation</span><br>
+                <span class="email">Email: myi480@umkt.ac.id</span>
+            </figcaption>
+        </figure>
+
+        <figure class="profile">
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/ras.png" alt="Rahmatullah Ayu Hasmiati">
+            <figcaption>
+                <span class="text-big">Rahmatullah Ayu Hasmiati</span>
+                <span class="role">Vice Director for International Affairs</span><br>
+                <span class="email">Email: ra894@umkt.ac.id</span>
+            </figcaption>
+        </figure>
+    </div>
+</section>
+
+<!-- Staff Section -->
+<section>
+    <h2>Staff</h2>
+    <div class="divider"></div>
+    <div class="container">
+        <figure class="profile">
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png" alt="Bayu Mahardika">
+            <figcaption>
+                <span class="text-big">Bayu Cadar Mahardika Putra Dewa, S.Kom</span>
+                <span class="role">Staff of International Relation Office</span><br>
+                <span class="email">Email: bcm697@umkt.ac.id</span>
+            </figcaption>
+        </figure>
+    </div>
+</section>
 
 </body>
 </html>
