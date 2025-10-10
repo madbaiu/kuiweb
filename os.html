@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUI UMKT - Staff Profiles</title>
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f9fafb;
+        color: #333;
+    }
+
+    /* ---- Highlighted Deputy Card ---- */
+    .deputy {
+        background: linear-gradient(135deg, #004aad, #0072ff);
+        color: white;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 400px;
+        margin: 0 auto 40px auto;
+        padding: 20px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        transition: transform 0.3s ease;
+    }
+    .deputy:hover {
+        transform: translateY(-5px);
+    }
+    .deputy img {
+        width: 100%;
+        height: auto;
+        border-radius: 14px;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+        margin-bottom: 15px;
+    }
+    .deputy .name {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+    .deputy .role {
+        font-size: 1rem;
+        color: #ffcc70;
+    }
+
+    /* ---- Staff Grid ---- */
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        justify-items: center;
+    }
+    .profile {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        text-align: center;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 100%;
+        max-width: 300px;
+    }
+    .profile:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .profile img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+    }
+    figcaption {
+        padding: 15px;
+    }
+    .text-big {
+        display: block;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: #111;
+        margin-bottom: 4px;
+    }
+    .role {
+        color: #e74c3c;
+        font-size: 0.95rem;
+    }
+    .email {
+        color: #3498db;
+        font-size: 0.9rem;
+    }
+</style>
+</head>
+<body>
+
+<!-- Highlighted Deputy -->
+<figure class="deputy">
+    <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Bambang Setiaji">
+    <figcaption>
+        <div class="name">Prof. Bambang Setiaji</div>
+        <div class="role">Deputy II for HRAD, Publications, and Partnerships</div>
+    </figcaption>
+</figure>
+
+<!-- Other Staff -->
+<div class="container">
+    <figure class="profile">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png" alt="Anita Shalehah">
+        <figcaption>
+            <span class="text-big">Anita Shalehah, S.IP., M.A., Ph.D</span>
+            <span class="role">Director of International Relation Office</span><br>
+            <span class="email">Email: as350@umkt.ac.id</span>
+        </figcaption>
+    </figure>
+
+    <figure class="profile">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png" alt="Menik Yuni Indriati">
+        <figcaption>
+            <span class="text-big">Menik Yuni Indriati, SE., M.Sc</span>
+            <span class="role">Secretary of International Relation Office</span><br>
+            <span class="email">Email: myi480@umkt.ac.id</span>
+        </figcaption>
+    </figure>
+
+    <figure class="profile">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png" alt="Bayu Mahardika">
+        <figcaption>
+            <span class="text-big">Bayu Cadar Mahardika Putra Dewa, S.Kom</span>
+            <span class="role">Staff of International Relation Office</span><br>
+            <span class="email">Email: bcm697@umkt.ac.id</span>
+        </figcaption>
+    </figure>
+</div>
+
+</body>
+</html>
