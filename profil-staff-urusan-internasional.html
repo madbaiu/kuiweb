@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile - Bayu Mahardika</title>
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f8f9fb;
+  margin: 0;
+  padding: 40px 20px;
+  color: #333;
+}
+
+/* =================== PROFILE CARD =================== */
+.profile-card {
+  max-width: 1000px;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* =================== TOP SECTION =================== */
+.top-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+/* LEFT SIDE (PHOTO) */
+.left-side {
+  flex: 0 0 300px;
+  text-align: center;
+}
+.left-side img {
+  width: 100%;
+  border-radius: 14px;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* RIGHT SIDE (PROFILE INFO) */
+.right-side {
+  flex: 1;
+  min-width: 300px;
+}
+.name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #253253;
+  margin-bottom: 4px;
+}
+.role {
+  font-size: 1.1rem;
+  color: #e74c3c;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+.section {
+  margin-bottom: 20px;
+}
+.section h3 {
+  font-size: 1.05rem;
+  color: #253253;
+  margin-bottom: 8px;
+}
+.section ul {
+  margin: 0 0 0 18px;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* =================== TUGAS POKOK & FUNGSI (FULL WIDTH) =================== */
+.tupoksi {
+  background: #f6f6f9;
+  border-radius: 12px;
+  padding: 24px 30px;
+  line-height: 1.8;
+}
+.tupoksi h3 {
+  font-size: 1.2rem;
+  color: #253253;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.tupoksi ul {
+  margin: 0;
+  padding-left: 24px;
+  list-style-type: disc;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* =================== BACK BUTTON =================== */
+.back-container {
+  text-align: center;
+  margin-top: 30px;
+}
+.back-link {
+  display: inline-block;
+  background: linear-gradient(90deg, #253253, #ffcc70);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+.back-link:hover {
+  opacity: 0.85;
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 768px) {
+  .top-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .right-side {
+    text-align: center;
+  }
+  .tupoksi {
+    text-align: left;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="profile-card">
+  <!-- TOP SECTION -->
+  <div class="top-section">
+    <div class="left-side">
+      <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png" alt="Bayu Mahardika">
+    </div>
+
+    <div class="right-side">
+      <div class="name">Bayu Cadar Mahardika Putra Dewa, S.Kom</div>
+      <div class="role">Staff (International Affairs)</div>
+
+      <div class="section">
+        <h3>Academic</h3>
+        <ul>
+          <li>Informatika, Universitas Mulawarman (S1)</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>Career</h3>
+        <ul>
+          <li>Freelance Data Entry, BPN Kutai Kartanegara (2024)</li>
+          <li>IT Staff, DISPERINDAGKOP Kalimantan Timur (2020)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULL-WIDTH TUGAS POKOK & FUNGSI -->
+  <div class="tupoksi">
+    <h3>Tugas Pokok & Fungsi Wakil Direktur Urusan Internasional</h3>
+    <ul>
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- BACK BUTTON CENTERED -->
+<div class="back-container">
+  <a href="os.html" class="back-link">← Back to Organizational Structure</a>
+</div>
+
+</body>
+</html>

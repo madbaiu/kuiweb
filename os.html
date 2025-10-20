@@ -221,5 +221,44 @@ h2 {
     </div>
 </div>
 
+<script>
+(function sendHeight(){
+  function postHeight() {
+    try {
+      const height = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight
+      );
+      // kirim ke parent
+      window.parent.postMessage({ type: 'resize-iframe', height: height }, '*');
+    } catch (e) {
+      // jika cross-origin, masih boleh postMessage dari child -> parent
+      // tapi jika os.html dijalankan dengan sandbox tanpa allow-scripts atau JS diblok, ini gagal.
+    }
+  }
+
+  // kirim saat load + setelah fonts/images dimuat + saat resize/DOM changes
+  window.addEventListener('load', function(){
+    postHeight();
+    // sedikit delay utk gambar/fontrs
+    setTimeout(postHeight, 250);
+    setTimeout(postHeight, 800);
+  });
+
+  // tangani perubahan konten dinamis
+  window.addEventListener('resize', postHeight);
+
+  // MutationObserver: bila konten berubah, kirim ulang
+  const mo = new MutationObserver(function(){ postHeight(); });
+  mo.observe(document.body, { childList: true, subtree: true, attributes: true });
+
+  // juga kirim sekali setiap 1 detik selama 5 detik (fallback)
+  let i=0; const t = setInterval(()=>{ postHeight(); if(++i>5) clearInterval(t); }, 1000);
+
+})();
+</script>
+
 </body>
 </html>
