@@ -29,17 +29,27 @@
         margin: 0 auto 40px auto;
     }
 
-    /* ---- Highlighted Deputy Card ---- */
+    /* ---- Deputy Section ---- */
+    .deputy-section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        max-width: 1000px;
+        margin: 0 auto 80px auto;
+    }
+
     .deputy {
         background: linear-gradient(135deg, #999, #253253);
         color: white;
         border-radius: 20px;
         text-align: center;
-        max-width: 400px;
-        margin: 0 auto 60px auto;
+        max-width: 350px;
         padding: 20px;
         box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         transition: transform 0.3s ease;
+        flex-shrink: 0;
     }
     .deputy:hover {
         transform: translateY(-5px);
@@ -59,6 +69,16 @@
     .deputy .role {
         font-size: 1rem;
         color: #ffcc70;
+    }
+
+    /* ---- Deputy Description ---- */
+    .deputy-description {
+        flex: 1;
+        min-width: 300px;
+        text-align: justify;
+        line-height: 1.7;
+        color: #333;
+        font-size: 1rem;
     }
 
     /* ---- Staff Grid ---- */
@@ -111,6 +131,13 @@
     section {
         margin-bottom: 70px;
     }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 768px) {
+        .deputy-section {
+            flex-direction: column;
+        }
+    }
 </style>
 </head>
 <body>
@@ -119,13 +146,21 @@
 <section>
     <h2>Deputy</h2>
     <div class="divider"></div>
-    <figure class="deputy">
-        <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Bambang Setiaji">
-        <figcaption>
-            <div class="name">Prof. Bambang Setiaji</div>
-            <div class="role">Deputy I for Cooperation, Business Development, and Investment</div>
-        </figcaption>
-    </figure>
+
+    <div class="deputy-section">
+        <figure class="deputy">
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Bambang Setiaji">
+            <figcaption>
+                <div class="name">Prof. Bambang Setiaji</div>
+                <div class="role">Deputy I for Cooperation, Business Development, and Investment</div>
+            </figcaption>
+        </figure>
+
+        <div class="deputy-description">
+            The Deputy I for Cooperation, Business Development, and Investment of Universitas Muhammadiyah Kalimantan Timur (UMKT) is dedicated to advancing the university’s global engagement and strategic partnerships. Through the development of strong collaborations with educational institutions, industries, and organizations at both national and international levels, we aim to strengthen UMKT’s position as a forward-looking and globally connected university.<br><br>
+            Our office is committed to fostering innovative cooperation initiatives that promote academic excellence, research collaboration, student and staff mobility, and international exposure. These partnerships serve as a vital bridge for knowledge exchange, cross-cultural understanding, and sustainable development. As part of UMKT’s strategic mission, we strive to enhance the university’s reputation through impactful partnerships that reflect Muhammadiyah values and global standards.
+        </div>
+    </div>
 </section>
 
 <!-- Directors Section -->
