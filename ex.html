@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUI UMKT - Struktur Organisasi</title>
+<style>
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background: #ffffff;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    font-weight: 600;
+    color: #253253;
+    margin-bottom: 25px;
+}
+
+.divider {
+    width: 160px;
+    height: 4px;
+    background: linear-gradient(90deg, #253253, #ffcc70);
+    border-radius: 2px;
+    margin: 0 auto 40px auto;
+}
+
+/* ================= Deputy Section ================= */
+.deputy-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto 100px auto;
+    gap: 40px;
+}
+.deputy-photo {
+    flex: 0 0 320px;
+    text-align: center;
+}
+.deputy-photo img {
+    width: 100%;
+    border-radius: 20px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+.deputy-photo .name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.deputy-photo .role {
+    color: #ffcc70;
+    font-size: 1rem;
+}
+.deputy-desc {
+    flex: 1;
+    min-width: 300px;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* ================= Organization Tree ================= */
+.org-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 40px;
+}
+
+/* --- Node Styles --- */
+.node {
+    text-align: center;
+    padding: 10px;
+    border-radius: 14px;
+    transition: transform 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+.node:hover {
+    transform: translateY(-5px);
+}
+.node img {
+    width: 180px;
+    border-radius: 14px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.node .name {
+    font-weight: 600;
+    margin-top: 8px;
+    font-size: 1.05rem;
+}
+.node .role {
+    color: #e74c3c;
+    font-size: 0.9rem;
+}
+
+/* --- Rows --- */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 150px;
+    position: relative;
+}
+
+/* --- Staff Columns below Vice Directors --- */
+.vd-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+/* ================= Connector Lines ================= */
+.org-tree > .node:first-child::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #253253;
+    transform: translateX(-50%);
+}
+.vd-group::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #253253;
+    transform: translateX(-50%);
+}
+.vd-group > .node:first-child::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background: #253253;
+    transform: translateX(-50%);
+}
+
+/* ================= Modal ================= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+}
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+}
+.modal-content img {
+    width: 200px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+}
+.close {
+    color: #aaa;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    cursor: pointer;
+}
+.close:hover {
+    color: #000;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 768px) {
+  .deputy-section { flex-direction: column; text-align: center; }
+  .row { flex-direction: column; gap: 60px; }
+  .node img { width: 150px; }
+}
+</style>
+</head>
+<body>
+
+<h2>Deputy</h2>
+<div class="divider"></div>
+
+<section class="deputy-section">
+    <div class="deputy-photo" onclick="openModal('modal-bambang')">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Prof. Bambang Setiaji">
+        <div class="name">Prof. Bambang Setiaji</div>
+        <div class="role">Deputy I for Cooperation, Business Development, and Investment</div>
+    </div>
+    <div class="deputy-desc">
+        <p>Deputy I for Cooperation, Business Development, and Investment of Universitas Muhammadiyah Kalimantan Timur (UMKT)...</p>
+    </div>
+</section>
+
+<h2>Organizational Structure</h2>
+<div class="divider"></div>
+
+<div class="org-tree">
+    <div class="node" onclick="openModal('modal-bambang')">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png">
+        <div class="name">Prof. Bambang Setiaji</div>
+        <div class="role">Deputy I</div>
+    </div>
+
+    <div class="node" onclick="openModal('modal-anita')">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png">
+        <div class="name">Anita Shalehah, S.IP., M.A., Ph.D</div>
+        <div class="role">Director of Cooperation and International Affairs</div>
+    </div>
+
+    <div class="row">
+        <div class="vd-group">
+            <div class="node" onclick="openModal('modal-menik')">
+                <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png">
+                <div class="name">Menik Yuni Indriati, SE., M.Sc</div>
+                <div class="role">Vice Director for Cooperation</div>
+            </div>
+            <div class="node" onclick="openModal('modal-staff-kerjasama')">
+                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg">
+                <div class="name">?</div>
+                <div class="role">Staff (Cooperation Affairs)</div>
+            </div>
+        </div>
+
+        <div class="vd-group">
+            <div class="node" onclick="openModal('modal-ayu')">
+                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg">
+                <div class="name">Dr. Rahmatullah Ayu Hasmiati</div>
+                <div class="role">Vice Director for International Affairs</div>
+            </div>
+            <div class="node" onclick="openModal('modal-bayu')">
+                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png">
+                <div class="name">Bayu Cadar Mahardika Putra Dewa, S.Kom</div>
+                <div class="role">Staff (International Affairs)</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= MODAL: ANITA SHALEHAH ================= -->
+<div id="modal-anita" class="modal">
+  <div class="modal-content" style="max-width: 1000px; padding: 0;">
+    <span class="close" onclick="closeModal('modal-anita')">&times;</span>
+    <div style="font-family: 'Poppins', sans-serif; background:#fff; padding:40px; border-radius:16px;">
+
+      <div class="top-section" style="display:flex; flex-wrap:wrap; gap:40px; align-items:flex-start;">
+        <!-- PHOTO -->
+        <div class="left-side" style="flex:0 0 300px; text-align:center;">
+          <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png"
+               alt="Anita Shalehah"
+               style="width:100%; border-radius:14px; aspect-ratio:3/4; object-fit:cover; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+        </div>
+
+        <!-- INFO -->
+        <div class="right-side" style="flex:1; min-width:300px;">
+          <div class="name" style="font-size:1.8rem; font-weight:700; color:#253253; margin-bottom:4px;">Anita Shalehah, S.IP., M.A., Ph.D</div>
+          <div class="role" style="font-size:1.1rem; color:#e74c3c; margin-bottom:20px; font-weight:500;">Director of Cooperation and International Affairs</div>
+
+          <div class="section" style="margin-bottom:20px;">
+            <h3 style="font-size:1.05rem; color:#253253; margin-bottom:8px;">Academic</h3>
+            <ul style="margin:0 0 0 18px; line-height:1.6;">
+              <li>Business Administration, Asia University Taiwan (Ph.D)</li>
+              <li>International Relations, Universitas Gadjah Mada (M.A.)</li>
+              <li>International Relations, Universitas Muhammadiyah Yogyakarta (B.A.)</li>
+            </ul>
+          </div>
+
+          <div class="section" style="margin-bottom:20px;">
+            <h3 style="font-size:1.05rem; color:#253253; margin-bottom:8px;">Career</h3>
+            <ul style="margin:0 0 0 18px; line-height:1.6;">
+              <li>Graduate Program Secretary of Management @ UMKT (2024)</li>
+              <li>Head of International Relations Study Program @ UMKT (2017)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESPONSIBILITIES -->
+      <div class="tupoksi" style="background:#f6f6f9; border-radius:12px; padding:24px 30px; margin-top:30px; line-height:1.8;">
+        <div class="desc" style="text-align:justify; margin-bottom:16px;">
+          Supports UMKT’s vision as an Islamic university based on information technology that is excellent and contributes to solving social and environmental issues. Under the coordination of Deputy I for Collaboration, Business Development, and Investment, the Director leads strategic initiatives to strengthen partnership development and academic mobility.
+        </div>
+        <h3 style="font-size:1.2rem; color:#253253; text-align:center; margin-bottom:12px;">Responsibilities:</h3>
+        <ul style="padding-left:24px; color:#444; font-size:1rem;">
+          <li>Ensure all OCIA programs align with the vision and mission of Universitas Muhammadiyah Kalimantan Timur.</li>
+          <li>Ensure that all collaboration activities comply with DIKTISAINTEK guidelines and policies.</li>
+          <li>Lead and supervise the implementation of OCIA’s strategic programs to enhance the university’s global engagement and international partnerships.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script>
+function openModal(id) {
+    document.getElementById(id).style.display = "block";
+}
+function closeModal(id) {
+    document.getElementById(id).style.display = "none";
+}
+window.onclick = function(event) {
+    const modals = document.querySelectorAll(".modal");
+    modals.forEach(m => {
+        if (event.target == m) m.style.display = "none";
+    });
+};
+</script>
+
+</body>
+</html>
