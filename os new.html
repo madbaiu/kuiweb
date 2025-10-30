@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUI UMKT - Struktur Organisasi</title>
+<style>
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    background: #ffffff;
+    color: #333;
+}
+
+h2 {
+    text-align: center;
+    font-weight: 600;
+    color: #253253;
+    margin-bottom: 25px;
+}
+
+.divider {
+    width: 160px;
+    height: 4px;
+    background: linear-gradient(90deg, #253253, #ffcc70);
+    border-radius: 2px;
+    margin: 0 auto 40px auto;
+}
+
+/* ================= Deputy Section ================= */
+.deputy-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto 100px auto;
+    gap: 40px;
+}
+.deputy-photo {
+    flex: 0 0 320px;
+    text-align: center;
+}
+.deputy-photo img {
+    width: 100%;
+    border-radius: 20px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.deputy-photo a {
+    text-decoration: none;
+    color: inherit;
+}
+.deputy-photo .name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+.deputy-photo .role {
+    color: #ffcc70;
+    font-size: 1rem;
+}
+.deputy-desc {
+    flex: 1;
+    min-width: 300px;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* ================= Organization Tree ================= */
+.org-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 40px;
+}
+
+/* --- Node Styles --- */
+.node {
+    text-align: center;
+    padding: 10px;
+    border-radius: 14px;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+.node:hover {
+    transform: translateY(-5px);
+}
+.node img {
+    width: 180px;
+    border-radius: 14px;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.node a {
+    text-decoration: none;
+    color: inherit;
+}
+.node .name {
+    font-weight: 600;
+    margin-top: 8px;
+    font-size: 1.05rem;
+}
+.node .role {
+    color: #e74c3c;
+    font-size: 0.9rem;
+}
+
+/* --- Rows --- */
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 150px;
+    position: relative;
+}
+
+/* --- Staff Columns below Vice Directors --- */
+.vd-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    position: relative;
+}
+
+/* ================= Connector Lines ================= */
+
+/* Line between Deputy → Director */
+.org-tree > .node:first-child::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #253253;
+    transform: translateX(-50%);
+}
+
+/* Vertical lines from the horizontal connector to each Vice Director */
+.vd-group::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    width: 2px;
+    height: 40px;
+    background: #253253;
+    transform: translateX(-50%);
+}
+
+/* Line connecting each Vice Director to their Staff */
+.vd-group > .node:first-child::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 2px;
+    height: 30px;
+    background: #253253;
+    transform: translateX(-50%);
+}
+
+/* ================= Responsive =================== */
+@media (max-width: 768px) {
+  .deputy-section {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .deputy-photo {
+    flex: none;
+    width: 80%;
+    max-width: 320px;
+    margin-bottom: 20px;
+  }
+
+  .deputy-desc {
+    width: 90%;
+    text-align: justify;
+  }
+
+  .org-tree {
+    align-items: center;
+  }
+
+  .row {
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+  }
+
+  .row::before,
+  .vd-group::before,
+  .vd-group > .node:first-child::after {
+    display: none;
+  }
+
+  .node {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 240px;
+    width: 100%;
+  }
+
+  .node img {
+    display: block;
+    margin: 0 auto;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2>Deputy</h2>
+<div class="divider"></div>
+
+<section class="deputy-section">
+    <div class="deputy-photo">
+        <a href="https://www.umkt.ac.id/kantor-kerjasama-dan-urusan-internasional/page/profil-direktur.html">
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Prof. Bambang Setiaji">
+            <div class="name">Prof. Bambang Setiaji</div>
+            <div class="role">Deputy I for Cooperation, Business Development, and Investment</div>
+        </a>
+    </div>
+    <div class="deputy-desc">
+        <p>Deputy I for Cooperation, Business Development, and Investment of Universitas Muhammadiyah Kalimantan Timur (UMKT) is dedicated to advancing the university’s global engagement and strategic partnerships. Through the development of strong collaborations with educational institutions, industries, and organizations at both national and international levels, we aim to strengthen UMKT’s position as a forward-looking and globally connected university.</p>
+        <p>Our office is committed to fostering innovative cooperation initiatives that promote academic excellence, research collaboration, student and staff mobility, and international exposure. These partnerships serve as a vital bridge for knowledge exchange, cross-cultural understanding, and sustainable development. As part of UMKT’s strategic mission, we strive to enhance the university’s reputation through impactful partnerships that reflect Muhammadiyah values and global standards.</p>
+    </div>
+</section>
+
+<!-- ================= ORGANIZATION TREE ================= -->
+<h2>Organizational Structure</h2>
+<div class="divider"></div>
+
+<div class="org-tree">
+
+    <!-- Deputy Node -->
+    <div class="node">
+        <a href="https://www.umkt.ac.id/kantor-kerjasama-dan-urusan-internasional/page/profil-direktur.html">
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Prof. Bambang Setiaji">
+            <div class="name">Prof. Bambang Setiaji</div>
+            <div class="role">Deputy I</div>
+        </a>
+    </div>
+
+    <!-- Director -->
+    <div class="node">
+        <a href="https://www.umkt.ac.id/kantor-kerjasama-dan-urusan-internasional/page/profil-direktur.html">
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png" alt="Anita Shalehah">
+            <div class="name">Anita Shalehah, S.IP., M.A., Ph.D</div>
+            <div class="role">Director of Cooperation and International Affairs</div>
+        </a>
+    </div>
+
+    <!-- Vice Directors and Staff -->
+    <div class="row">
+        <!-- Vice Director + Staff 1 -->
+        <div class="vd-group">
+            <div class="node">
+                <a href="https://www.umkt.ac.id/kantor-kerjasama-dan-urusan-internasional/page/profil-direktur.html">
+                    <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png" alt="Menik Yuni Indriati">
+                    <div class="name">Menik Yuni Indriati, SE., M.Sc</div>
+                    <div class="role">Vice Director for Cooperation</div>
+                </a>
+            </div>
+            <div class="node">
+                <a href="https://www.umkt.ac.id/kantor-kerjasama-dan-urusan-internasional/page/profil-direktur.html">
+                    <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg" alt="TBD">
+                    <div class="name">?</div>
+                    <div class="role">Staff (Cooperation Affairs)</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Vice Director + Staff 2 -->
+        <div class="vd-group">
+            <div class="node">
+                <a href="https://www.umkt.ac.id/kantor-kerjasama-dan-urusan-internasional/page/profil-direktur.html">
+                    <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg" alt="Rahmatullah Ayu Hasmiati">
+                    <div class="name">Dr. Rahmatullah Ayu Hasmiati, S.Pd., M.H</div>
+                    <div class="role">Vice Director for International Affairs</div>
+                </a>
+            </div>
+            <div class="node">
+                <a href="https://www.umkt.ac.id/kantor-kerjasama-dan-urusan-internasional/page/profil-direktur.html">
+                    <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png" alt="Bayu Mahardika">
+                    <div class="name">Bayu Cadar Mahardika Putra Dewa, S.Kom</div>
+                    <div class="role">Staff (International Affairs)</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function sendHeight(){
+  function postHeight() {
+    try {
+      const height = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight
+      );
+      window.parent.postMessage({ type: 'resize-iframe', height: height }, '*');
+    } catch (e) {}
+  }
+
+  window.addEventListener('load', function(){
+    postHeight();
+    setTimeout(postHeight, 250);
+    setTimeout(postHeight, 800);
+  });
+
+  window.addEventListener('resize', postHeight);
+
+  const mo = new MutationObserver(function(){ postHeight(); });
+  mo.observe(document.body, { childList: true, subtree: true, attributes: true });
+
+  let i=0; const t = setInterval(()=>{ postHeight(); if(++i>5) clearInterval(t); }, 1000);
+})();
+</script>
+
+</body>
+</html>
