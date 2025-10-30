@@ -187,5 +187,34 @@ body {
   <a href="os.html" class="back-link">← Back to Organizational Structure</a>
 </div>
 
+<script>
+(function sendHeight(){
+  function postHeight() {
+    try {
+      const height = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight
+      );
+      window.parent.postMessage({ type: 'resize-iframe', height: height }, '*');
+    } catch (e) {}
+  }
+
+  window.addEventListener('load', function(){
+    postHeight();
+    setTimeout(postHeight, 250);
+    setTimeout(postHeight, 800);
+  });
+
+  window.addEventListener('resize', postHeight);
+
+  const mo = new MutationObserver(function(){ postHeight(); });
+  mo.observe(document.body, { childList: true, subtree: true, attributes: true });
+
+  let i=0; const t = setInterval(()=>{ postHeight(); if(++i>5) clearInterval(t); }, 1000);
+})();
+</script>
+
 </body>
 </html>

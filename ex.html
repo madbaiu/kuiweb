@@ -154,49 +154,66 @@ h2 {
     transform: translateX(-50%);
 }
 
-/* ================= Modal ================= */
+/* ================= MODAL STYLING ================= */
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.7);
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+  overflow-y: auto;
+  padding: 60px 20px;
 }
 .modal-content {
-    background-color: #fff;
-    margin: 10% auto;
-    padding: 30px;
-    border-radius: 20px;
-    max-width: 600px;
-    text-align: center;
-    position: relative;
+  background: #fff;
+  max-width: 1000px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  padding: 40px;
+  position: relative;
+  animation: fadeIn 0.3s ease;
 }
-.modal-content img {
-    width: 200px;
-    border-radius: 14px;
-    margin-bottom: 20px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-.close {
-    color: #aaa;
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 28px;
-    cursor: pointer;
+.close-btn {
+  position: absolute;
+  top: 20px; right: 25px;
+  font-size: 28px;
+  cursor: pointer;
+  color: #333;
 }
-.close:hover {
-    color: #000;
-}
+.close-btn:hover { color: #e74c3c; }
 
-/* ================= Responsive ================= */
+/* Inside modal profile */
+.top-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+.left-side { flex: 0 0 300px; text-align: center; }
+.left-side img {
+  width: 100%; border-radius: 14px; aspect-ratio: 3/4;
+  object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.right-side { flex: 1; min-width: 300px; }
+.name { font-size: 1.8rem; font-weight: 700; color: #253253; margin-bottom: 4px; }
+.role { font-size: 1.1rem; color: #e74c3c; margin-bottom: 20px; font-weight: 500; }
+.section h3 { font-size: 1.05rem; color: #253253; margin-bottom: 8px; }
+.section ul { margin: 0 0 0 18px; padding: 0; line-height: 1.6; }
+.tupoksi { background: #f6f6f9; border-radius: 12px; padding: 24px 30px; line-height: 1.8; margin-top: 20px; }
+.tupoksi h3 { text-align: center; margin-bottom: 10px; }
+
+/* Responsive */
 @media (max-width: 768px) {
-  .deputy-section { flex-direction: column; text-align: center; }
-  .row { flex-direction: column; gap: 60px; }
-  .node img { width: 150px; }
+  .deputy-section { flex-direction: column; align-items: center; text-align: center; }
+  .deputy-photo { flex: none; width: 80%; max-width: 320px; }
+  .org-tree { align-items: center; }
+  .row { flex-direction: column; align-items: center; gap: 60px; }
+  .top-section { flex-direction: column; align-items: center; }
 }
 </style>
 </head>
@@ -206,13 +223,13 @@ h2 {
 <div class="divider"></div>
 
 <section class="deputy-section">
-    <div class="deputy-photo" onclick="openModal('modal-bambang')">
+    <div class="deputy-photo" data-person="bambang">
         <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Prof. Bambang Setiaji">
         <div class="name">Prof. Bambang Setiaji</div>
         <div class="role">Deputy I for Cooperation, Business Development, and Investment</div>
     </div>
     <div class="deputy-desc">
-        <p>Deputy I for Cooperation, Business Development, and Investment of Universitas Muhammadiyah Kalimantan Timur (UMKT)...</p>
+        <p>Deputy I for Cooperation, Business Development, and Investment of Universitas Muhammadiyah Kalimantan Timur (UMKT) is dedicated to advancing the university’s global engagement and strategic partnerships...</p>
     </div>
 </section>
 
@@ -220,40 +237,40 @@ h2 {
 <div class="divider"></div>
 
 <div class="org-tree">
-    <div class="node" onclick="openModal('modal-bambang')">
-        <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png">
+    <div class="node" data-person="bambang">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Prof. Bambang Setiaji">
         <div class="name">Prof. Bambang Setiaji</div>
         <div class="role">Deputy I</div>
     </div>
 
-    <div class="node" onclick="openModal('modal-anita')">
-        <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png">
+    <div class="node" data-person="anita">
+        <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png" alt="Anita Shalehah">
         <div class="name">Anita Shalehah, S.IP., M.A., Ph.D</div>
         <div class="role">Director of Cooperation and International Affairs</div>
     </div>
 
     <div class="row">
         <div class="vd-group">
-            <div class="node" onclick="openModal('modal-menik')">
-                <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png">
+            <div class="node" data-person="menik">
+                <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png" alt="Menik Yuni Indriati">
                 <div class="name">Menik Yuni Indriati, SE., M.Sc</div>
                 <div class="role">Vice Director for Cooperation</div>
             </div>
-            <div class="node" onclick="openModal('modal-staff-kerjasama')">
-                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg">
+            <div class="node" data-person="staff1">
+                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg" alt="TBD">
                 <div class="name">?</div>
                 <div class="role">Staff (Cooperation Affairs)</div>
             </div>
         </div>
 
         <div class="vd-group">
-            <div class="node" onclick="openModal('modal-ayu')">
-                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg">
-                <div class="name">Dr. Rahmatullah Ayu Hasmiati</div>
+            <div class="node" data-person="ayu">
+                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg" alt="Rahmatullah Ayu Hasmiati">
+                <div class="name">Dr. Rahmatullah Ayu Hasmiati, S.Pd., M.H</div>
                 <div class="role">Vice Director for International Affairs</div>
             </div>
-            <div class="node" onclick="openModal('modal-bayu')">
-                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png">
+            <div class="node" data-person="bayu">
+                <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png" alt="Bayu Mahardika">
                 <div class="name">Bayu Cadar Mahardika Putra Dewa, S.Kom</div>
                 <div class="role">Staff (International Affairs)</div>
             </div>
@@ -261,75 +278,111 @@ h2 {
     </div>
 </div>
 
-<!-- ================= MODAL: ANITA SHALEHAH ================= -->
-<div id="modal-anita" class="modal">
-  <div class="modal-content" style="max-width: 1000px; padding: 0;">
-    <span class="close" onclick="closeModal('modal-anita')">&times;</span>
-    <div style="font-family: 'Poppins', sans-serif; background:#fff; padding:40px; border-radius:16px;">
-
-      <div class="top-section" style="display:flex; flex-wrap:wrap; gap:40px; align-items:flex-start;">
-        <!-- PHOTO -->
-        <div class="left-side" style="flex:0 0 300px; text-align:center;">
-          <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png"
-               alt="Anita Shalehah"
-               style="width:100%; border-radius:14px; aspect-ratio:3/4; object-fit:cover; box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-        </div>
-
-        <!-- INFO -->
-        <div class="right-side" style="flex:1; min-width:300px;">
-          <div class="name" style="font-size:1.8rem; font-weight:700; color:#253253; margin-bottom:4px;">Anita Shalehah, S.IP., M.A., Ph.D</div>
-          <div class="role" style="font-size:1.1rem; color:#e74c3c; margin-bottom:20px; font-weight:500;">Director of Cooperation and International Affairs</div>
-
-          <div class="section" style="margin-bottom:20px;">
-            <h3 style="font-size:1.05rem; color:#253253; margin-bottom:8px;">Academic</h3>
-            <ul style="margin:0 0 0 18px; line-height:1.6;">
-              <li>Business Administration, Asia University Taiwan (Ph.D)</li>
-              <li>International Relations, Universitas Gadjah Mada (M.A.)</li>
-              <li>International Relations, Universitas Muhammadiyah Yogyakarta (B.A.)</li>
-            </ul>
-          </div>
-
-          <div class="section" style="margin-bottom:20px;">
-            <h3 style="font-size:1.05rem; color:#253253; margin-bottom:8px;">Career</h3>
-            <ul style="margin:0 0 0 18px; line-height:1.6;">
-              <li>Graduate Program Secretary of Management @ UMKT (2024)</li>
-              <li>Head of International Relations Study Program @ UMKT (2017)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- RESPONSIBILITIES -->
-      <div class="tupoksi" style="background:#f6f6f9; border-radius:12px; padding:24px 30px; margin-top:30px; line-height:1.8;">
-        <div class="desc" style="text-align:justify; margin-bottom:16px;">
-          Supports UMKT’s vision as an Islamic university based on information technology that is excellent and contributes to solving social and environmental issues. Under the coordination of Deputy I for Collaboration, Business Development, and Investment, the Director leads strategic initiatives to strengthen partnership development and academic mobility.
-        </div>
-        <h3 style="font-size:1.2rem; color:#253253; text-align:center; margin-bottom:12px;">Responsibilities:</h3>
-        <ul style="padding-left:24px; color:#444; font-size:1rem;">
-          <li>Ensure all OCIA programs align with the vision and mission of Universitas Muhammadiyah Kalimantan Timur.</li>
-          <li>Ensure that all collaboration activities comply with DIKTISAINTEK guidelines and policies.</li>
-          <li>Lead and supervise the implementation of OCIA’s strategic programs to enhance the university’s global engagement and international partnerships.</li>
-        </ul>
-      </div>
-
-    </div>
+<!-- ========== MODAL TEMPLATE ========== -->
+<div id="profileModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <div id="modalBody"></div>
   </div>
 </div>
 
+<script>
+const profiles = {
+  anita: `
+  <div class="top-section">
+    <div class="left-side"><img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png" alt="Anita Shalehah"></div>
+    <div class="right-side">
+      <div class="name">Anita Shalehah, S.IP., M.A., Ph.D</div>
+      <div class="role">Director of Cooperation and International Affairs</div>
+      <div class="section"><h3>Academic</h3>
+      <ul><li>Ph.D Business Administration, Asia University Taiwan</li>
+      <li>M.A International Relations, Universitas Gadjah Mada</li>
+      <li>B.A International Relations, Universitas Muhammadiyah Yogyakarta</li></ul></div>
+      <div class="section"><h3>Career</h3><ul><li>Head of HI Dept. @ UMKT</li><li>Lecturer & Researcher</li></ul></div>
+    </div>
+  </div>
+  <div class="tupoksi">
+    <div class="desc">Supports UMKT’s vision as an Islamic university based on information technology that is excellent and contributes to solving social and environmental issues.</div>
+    <h3>Responsibilities :</h3>
+    <ul>
+      <li>Ensure OCIA programs align with UMKT’s vision and mission.</li>
+      <li>Supervise implementation of international collaboration programs.</li>
+      <li>Lead global engagement initiatives.</li>
+    </ul>
+  </div>`,
+
+  bambang: `
+  <div class="top-section">
+    <div class="left-side"><img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/dk.png" alt="Prof. Bambang Setiaji"></div>
+    <div class="right-side">
+      <div class="name">Prof. Bambang Setiaji</div>
+      <div class="role">Deputy I for Cooperation, Business Development, and Investment</div>
+      <div class="section"><h3>Background</h3><p>Responsible for developing UMKT’s strategic collaborations, innovation programs, and investment partnerships globally.</p></div>
+    </div>
+  </div>`,
+
+  menik: `<div class="top-section"><div class="left-side"><img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png" alt="Menik Yuni Indriati"></div><div class="right-side"><div class="name">Menik Yuni Indriati, SE., M.Sc</div><div class="role">Vice Director for Cooperation</div><p>Oversees cooperation programs, MoUs, and strategic partnership initiatives.</p></div></div>`,
+
+  ayu: `<div class="top-section"><div class="left-side"><img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg" alt="Rahmatullah Ayu Hasmiati"></div><div class="right-side"><div class="name">Dr. Rahmatullah Ayu Hasmiati, S.Pd., M.H</div><div class="role">Vice Director for International Affairs</div><p>Coordinates international programs, student mobility, and cultural exchange activities.</p></div></div>`,
+
+  bayu: `<div class="top-section"><div class="left-side"><img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png" alt="Bayu Mahardika"></div><div class="right-side"><div class="name">Bayu Cadar Mahardika Putra Dewa, S.Kom</div><div class="role">Staff (International Affairs)</div><p>Handles administrative and technical aspects of UMKT’s international partnerships.</p></div></div>`,
+
+  staff1: `<div class="top-section"><div class="left-side"><img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg"></div><div class="right-side"><div class="name">TBD</div><div class="role">Staff (Cooperation Affairs)</div></div></div>`
+};
+
+const modal = document.getElementById("profileModal");
+const modalBody = document.getElementById("modalBody");
+const closeBtn = document.querySelector(".close-btn");
+
+document.querySelectorAll("[data-person]").forEach(node => {
+  node.addEventListener("click", () => {
+    const key = node.getAttribute("data-person");
+    modalBody.innerHTML = profiles[key] || "<p>Profile not available.</p>";
+    modal.style.display = "block";
+    document.body.style.overflow = "hidden";
+  });
+});
+
+closeBtn.onclick = () => {
+  modal.style.display = "none";
+  document.body.style.overflow = "";
+};
+
+window.onclick = e => {
+  if (e.target == modal) {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+};
+</script>
 
 <script>
-function openModal(id) {
-    document.getElementById(id).style.display = "block";
-}
-function closeModal(id) {
-    document.getElementById(id).style.display = "none";
-}
-window.onclick = function(event) {
-    const modals = document.querySelectorAll(".modal");
-    modals.forEach(m => {
-        if (event.target == m) m.style.display = "none";
-    });
-};
+(function sendHeight(){
+  function postHeight() {
+    try {
+      const height = Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight
+      );
+      window.parent.postMessage({ type: 'resize-iframe', height: height }, '*');
+    } catch (e) {}
+  }
+
+  window.addEventListener('load', function(){
+    postHeight();
+    setTimeout(postHeight, 250);
+    setTimeout(postHeight, 800);
+  });
+
+  window.addEventListener('resize', postHeight);
+
+  const mo = new MutationObserver(function(){ postHeight(); });
+  mo.observe(document.body, { childList: true, subtree: true, attributes: true });
+
+  let i=0; const t = setInterval(()=>{ postHeight(); if(++i>5) clearInterval(t); }, 1000);
+})();
 </script>
 
 </body>

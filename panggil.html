@@ -1,0 +1,42 @@
+<p>
+    <iframe style="border-radius:12px;border-style:none;box-shadow:0 0 12px rgba(0,0,0,0.1);width:100%;" id="iframeOS" src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/ex.html" scrolling="no"></iframe>&nbsp;<script>
+        (function(){
+          const iframe = document.getElementById('iframeOS');
+          const trustedOrigin = new URL(iframe.src).origin; // origin os.html (minio.umkt.ac.id)
+          // 1) Handle postMessage dari child (preferred)
+          window.addEventListener('message', function(e){
+            // accept messages only from the iframe origin
+            if (!e.origin || e.origin !== trustedOrigin) return;
+            const data = e.data || {};
+            if (data.type === 'resize-iframe' && typeof data.height === 'number') {
+              iframe.style.height = data.height + 'px';
+            }
+          }, false);
+          // 2) Fallback: try same-origin read (works only if same-origin)
+          let attempts = 0;
+          const maxAttempts = 30;
+          const pollInterval = 300;
+          const poller = setInterval(function(){
+            attempts++;
+            try {
+              const doc = iframe.contentWindow.document;
+              const h = Math.max(
+                doc.documentElement.scrollHeight,
+                doc.body.scrollHeight,
+                doc.documentElement.offsetHeight
+              );
+              if (h && h > 0) {
+                iframe.style.height = h + 'px';
+                clearInterval(poller);
+              }
+            } catch (err) {
+              // cross-origin access not allowed -> ignore, wait for postMessage.
+              if (attempts >= maxAttempts) clearInterval(poller);
+            }
+          }, pollInterval);
+          // 3) Safety: set a minimum viewport height so it doesn't look cut-off
+          //    (optional) remove or tweak as desired
+          iframe.style.minHeight = '600px';
+        })();
+        </script>
+</p>
