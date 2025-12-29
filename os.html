@@ -128,44 +128,6 @@ h2 {
     position: relative;
 }
 
-/* ================= Connector Lines ================= */
-
-/* Line between Deputy → Director */
-.org-tree > .node:first-child::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    width: 2px;
-    height: 40px;
-    background: #253253;
-    transform: translateX(-50%);
-}
-
-/* Vertical lines from the horizontal connector to each Vice Director */
-.vd-group::before {
-    content: "";
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    width: 2px;
-    height: 40px;
-    background: #253253;
-    transform: translateX(-50%);
-}
-
-/* Line connecting each Vice Director to their Staff */
-.vd-group > .node:first-child::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    width: 2px;
-    height: 30px;
-    background: #253253;
-    transform: translateX(-50%);
-}
-
 /* ================= Responsive ================= */
 @media (max-width: 768px) {
   .deputy-section {
@@ -254,27 +216,35 @@ h2 {
     <!-- Director -->
     <div class="node">
         <a href="https://www.umkt.ac.id/kantor-kerjasama-dan-urusan-internasional/page/profil-direktur.html">
-            <img src="https://minio.umkt.ac.id/dev-umkt-media/image_yJdiHLx.png" alt="Anita Shalehah">
-            <div class="name">Anita Shalehah, S.IP., M.A., Ph.D</div>
+            <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg" alt="Anita Shalehah">
+            <div class="name">Dr. Rahmatullah Ayu Hasmiati, S.Pd., M.H</div>
             <div class="role">Director of Cooperation and International Affairs</div>
         </a>
     </div>
 
-    <!-- Vice Directors and Staff -->
-    <div class="row">
-        <!-- Vice Director + Staff 1 -->
-        <div class="vd-group">
-            <div class="node">
+    <div class="node">
                 <a href="https://minio.umkt.ac.id/dev-umkt-media/dokumen/profil-wakil-direktur-kerjasama.html">
                     <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png" alt="Menik Yuni Indriati">
                     <div class="name">Menik Yuni Indriati, SE., M.Sc</div>
                     <div class="role">Vice Director for Cooperation</div>
                 </a>
             </div>
+    
+    <!-- Vice Directors and Staff -->
+    <div class="row">
+        <!-- Vice Director + Staff 1 -->
+        <div class="vd-group">
+            <!-- <div class="node">
+                <a href="https://minio.umkt.ac.id/dev-umkt-media/dokumen/profil-wakil-direktur-kerjasama.html">
+                    <img src="https://minio.umkt.ac.id/dev-umkt-media/image_8efBLj5.png" alt="Menik Yuni Indriati">
+                    <div class="name">Menik Yuni Indriati, SE., M.Sc</div>
+                    <div class="role">Vice Director for Cooperation</div>
+                </a>
+            </div> -->
             <div class="node">
                 <a href="https://minio.umkt.ac.id/dev-umkt-media/dokumen/profil-staff-kerjasama.html">
-                    <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg" alt="TBD">
-                    <div class="name">?</div>
+                    <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffmahda.png" alt="TBD">
+                    <div class="name">Mahda Amelia, S.Sos</div>
                     <div class="role">Staff (Cooperation Affairs)</div>
                 </a>
             </div>
@@ -282,13 +252,13 @@ h2 {
 
         <!-- Vice Director + Staff 2 -->
         <div class="vd-group">
-            <div class="node">
+            <!-- <div class="node">
                 <a href="https://minio.umkt.ac.id/dev-umkt-media/dokumen/profil-wakil-direktur-urusan-internasional.html">
                     <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/person-18.svg" alt="Rahmatullah Ayu Hasmiati">
-                    <div class="name">Dr. Rahmatullah Ayu Hasmiati, S.Pd., M.H</div>
+                    <div class="name"></div>
                     <div class="role">Vice Director for International Affairs</div>
                 </a>
-            </div>
+            </div> -->
             <div class="node">
                 <a href="https://minio.umkt.ac.id/dev-umkt-media/dokumen/profil-staff-urusan-internasional.html">
                     <img src="https://minio.umkt.ac.id/dev-umkt-media/dokumen/staffkui_N3fvegB.png" alt="Bayu Mahardika">
